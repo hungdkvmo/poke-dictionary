@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:poke_dictionary/gen/assets.gen.dart';
+import 'package:poke_dictionary/pages/login/google_sigin_button.dart';
+import 'package:poke_dictionary/utils/authentication.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -63,6 +65,28 @@ class LoginScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
+                  FutureBuilder(
+                    future: Authentication.initializeFirebase(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasError) {
+                        return const Text(
+                          'Error initializing Firebase',
+                          style: TextStyle(color: Colors.white),
+                        );
+                      } else if (snapshot.connectionState ==
+                          ConnectionState.done) {
+                        return const GoogleSignInButton();
+                      }
+                      return const CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          Colors.orange,
+                        ),
+                      );
+                    },
+                  ),
+                  const SizedBox(
+                    height: 45,
+                  ),
                   SizedBox(
                     height: 60,
                     child: ElevatedButton.icon(
@@ -91,37 +115,34 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 45,
-                  ),
-                  SizedBox(
-                    height: 60,
-                    child: ElevatedButton.icon(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFFFFFFF),
-                        minimumSize: const Size.fromHeight(50),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      icon: Assets.icons.googleIcon.svg(
-                        width: 24,
-                        height: 24,
-                      ),
-                      onPressed: () {
-                        // login with google
-                      },
-                      label: const Text(
-                        'Sign in with Google',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                          color: Color.fromRGBO(0, 0, 0, 0.54),
-                        ),
-                      ),
-                    ),
-                  ),
+                  // SizedBox(
+                  //   height: 60,
+                  //   child: ElevatedButton.icon(
+                  //     style: ElevatedButton.styleFrom(
+                  //       backgroundColor: const Color(0xFFFFFFFF),
+                  //       minimumSize: const Size.fromHeight(50),
+                  //       shape: RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.circular(10),
+                  //       ),
+                  //     ),
+                  //     icon: Assets.icons.googleIcon.svg(
+                  //       width: 24,
+                  //       height: 24,
+                  //     ),
+                  //     onPressed: () {
+                  //       // login with google
+                  //     },
+                  //     label: const Text(
+                  //       'Sign in with Google',
+                  //       textAlign: TextAlign.right,
+                  //       style: TextStyle(
+                  //         fontSize: 20,
+                  //         fontWeight: FontWeight.w500,
+                  //         color: Color.fromRGBO(0, 0, 0, 0.54),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             )
