@@ -41,7 +41,7 @@ class GoogleSignInButtonState extends State<GoogleSignInButton> {
             });
             User? user =
                 await Authentication.signInWithGoogle(context: context);
-
+            print('User: {$user.toString()}');
             if (user != null) {
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
