@@ -57,7 +57,7 @@ class _PokeListState extends State<PokeList> {
                   Pokemon poke = Pokemon(
                     name: snapshot.data![index].name,
                     id: pokeIndex,
-                    avatarUrl: '$imageUrl${(index + 1).toString()}.png',
+                    avatarUrl: '$imageUrl$pokeIndex.png',
                     url: snapshot.data![index].url,
                   );
                   return PokemonSingle(pokemon: poke);
