@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:poke_dictionary/pages/login/login_screen.dart';
+// import 'package:poke_dictionary/pages/login/login_screen.dart';
+import 'package:poke_dictionary/pages/pokemon/pokemon_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +26,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const LoginScreen(),
+      // home: const LoginScreen(),
+      home: const PokeList(),
     );
   }
 }
