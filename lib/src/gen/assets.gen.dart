@@ -22,8 +22,12 @@ class $AssetsIconsGen {
   SvgGenImage get googleIcon =>
       const SvgGenImage('assets/icons/google_icon.svg');
 
+  /// File path: assets/icons/pokeball_icon.svg
+  SvgGenImage get pokeballIcon =>
+      const SvgGenImage('assets/icons/pokeball_icon.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [facebookIcon, googleIcon];
+  List<SvgGenImage> get values => [facebookIcon, googleIcon, pokeballIcon];
 }
 
 class $AssetsImagesGen {

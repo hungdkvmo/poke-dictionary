@@ -1,4 +1,6 @@
-import 'package:poke_dictionary/utils/constants.dart';
+import 'dart:ui';
+
+import 'package:poke_dictionary/src/utils/constants.dart';
 
 String slice(String str, int len) {
   if (str.isEmpty) {
@@ -9,6 +11,24 @@ String slice(String str, int len) {
   }
   int strLen = str.length;
   return str.substring(strLen - len, strLen);
+}
+
+extension StringCasingExtension on String {
+  String toCapitalized() =>
+      length > 0 ? '${this[0].toUpperCase()}${substring(1).toLowerCase()}' : '';
+  String toTitleCase() => replaceAll(RegExp(' +'), ' ')
+      .split(' ')
+      .map((str) => str.toCapitalized())
+      .join(' ');
+}
+
+Color setPokeColorByType(List<String> types) {
+  Color result = Color(getColorPokemon('unknown'));
+  if (types.isNotEmpty) {
+    String primaryType = types[0];
+    result = Color(getColorPokemon(primaryType));
+  }
+  return result;
 }
 
 int getColorPokemon(String type) {
@@ -34,6 +54,9 @@ int getColorPokemon(String type) {
       break;
     case PokeType.bug:
       result = PokeType.bugColor;
+      break;
+    case PokeType.ghost:
+      result = PokeType.ghostColor;
       break;
     case PokeType.steel:
       result = PokeType.steelColor;

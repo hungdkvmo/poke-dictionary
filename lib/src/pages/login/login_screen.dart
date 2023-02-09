@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:poke_dictionary/gen/assets.gen.dart';
-import 'package:poke_dictionary/pages/login/google_sigin_button.dart';
-import 'package:poke_dictionary/utils/authentication.dart';
+import 'package:poke_dictionary/src/gen/assets.gen.dart';
+import 'package:poke_dictionary/src/pages/login/google_sigin_button.dart';
+import 'package:poke_dictionary/src/utils/authentication.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

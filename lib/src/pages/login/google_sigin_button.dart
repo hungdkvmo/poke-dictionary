@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:poke_dictionary/gen/assets.gen.dart';
-import 'package:poke_dictionary/utils/authentication.dart';
-import 'package:poke_dictionary/widgets/user/user_info.dart';
+import 'package:poke_dictionary/src/gen/assets.gen.dart';
+import 'package:poke_dictionary/src/utils/authentication.dart';
+import 'package:poke_dictionary/src/widgets/user_info.dart';
 
 class GoogleSignInButton extends StatefulWidget {
   const GoogleSignInButton({super.key});

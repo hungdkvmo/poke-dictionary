@@ -1,3 +1,12 @@
+class RouterName {
+  static const String pokemonFavorite = '/pokemon_favorite';
+  static const String pokemonDetail = '/pokemon_detail';
+  static const String pokemonList = '/pokemon_all';
+  static const String login = '/login';
+  static const String home = '/home';
+  static const String userInfo = '/user_infor';
+}
+
 class PokeType {
   static const String normal = 'normal'; // A8A878
   static const int normalColor = 0xFFA8A878;

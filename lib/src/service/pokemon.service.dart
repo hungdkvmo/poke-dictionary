@@ -1,16 +1,14 @@
 import 'dart:convert';
-
-import 'package:poke_dictionary/model/monster.dart';
 import 'package:dio/dio.dart';
-import 'package:poke_dictionary/model/pokedetail.dart';
+
+import 'package:poke_dictionary/src/model/monster.dart';
+import 'package:poke_dictionary/src/model/pokedetail.dart';
 
 import '../model/pokekalos.dart';
 
 Future<List<Monster>> fetchPokeList() async {
-  // final thumbnailUrl =
-  //     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png";
   final response =
-      await Dio().get('https://pokeapi.co/api/v2/pokemon?limit=20');
+      await Dio().get('https://pokeapi.co/api/v2/pokemon?limit=22');
   List<dynamic> results = [];
   if (response.statusCode == 200) {
     results = json.decode(response.toString())['results'];
