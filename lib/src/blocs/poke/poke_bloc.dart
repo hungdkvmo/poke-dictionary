@@ -79,16 +79,6 @@ class PokeBloc extends Bloc<PokeEvent, PokeState> {
         );
       }
       return pokeList;
-
-      // final body = json.decode(response.body) as List;
-      // return body.map((dynamic json) {
-      //   final map = json as Map<String, dynamic>;
-      //   return Post(
-      //     id: map['id'] as int,
-      //     title: map['title'] as String,
-      //     body: map['body'] as String,
-      //   );
-      // }).toList();
     }
     throw Exception('error fetching posts');
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:poke_dictionary/src/gen/assets.gen.dart';
 import 'package:poke_dictionary/src/pages/pokemon/pokemon_favorite.dart';
-import 'package:poke_dictionary/src/pages/pokemon/pokemon_list.dart';
+import 'package:poke_dictionary/src/pages/pokemon/pokemon_screen.dart';
 // import 'package:poke_dictionary/src/utils/constants.dart';
 
 class Home extends StatefulWidget {

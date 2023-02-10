@@ -42,9 +42,11 @@ class _PokeListViewState extends State<PokeListView> {
               children: List.generate(
                 state.hasReachedMax
                     ? state.monsters.length
-                    : state.monsters.length,
+                    : state.monsters.length + 1,
                 (int index) {
                   String pokeIndex = (index + 1).toString();
+                  print('index $index');
+                  print('state.monsters.length ${state.monsters.length}');
                   if (index >= state.monsters.length) {
                     return const BottomLoader();
                   }

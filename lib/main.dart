@@ -7,7 +7,7 @@ import 'package:poke_dictionary/src/pages/home.dart';
 import 'package:poke_dictionary/src/pages/login/login_screen.dart';
 import 'package:poke_dictionary/src/pages/pokemon/pokemon_detail.dart';
 import 'package:poke_dictionary/src/pages/pokemon/pokemon_favorite.dart';
-import 'package:poke_dictionary/src/pages/pokemon/pokemon_list.dart';
+import 'package:poke_dictionary/src/pages/pokemon/pokemon_screen.dart';
 // import 'package:poke_dictionary/widgets/user/user_info.dart';
 
 void main() {
