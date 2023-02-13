@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:localization/localization.dart';
 import 'package:poke_dictionary/simple_bloc_observer.dart';
 
 import 'package:flutter/material.dart';
@@ -21,14 +23,38 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    LocalJsonLocalization.delegate.directories = ['lib/src/i18n'];
     return MaterialApp(
       title: 'Pokemon Dictionary',
       theme: ThemeData(
         fontFamily: 'Poppins',
       ),
-      // home: const Scaffold(
-      //   body: Home(),
-      // ),
+      localizationsDelegates: [
+        // delegate from flutter_localization
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        // delegate from localization package.
+        LocalJsonLocalization.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', 'US'),
+        Locale('vi', 'VI'),
+      ],
+      localeResolutionCallback: (locale, supportedLocales) {
+        if (supportedLocales.contains(locale)) {
+          return locale;
+        }
+
+        // define vi as default when de language code is 'vi'
+        if (locale?.languageCode == 'vi') {
+          return const Locale('vi', 'VI');
+        }
+
+        // default language
+        // return const Locale('en', 'US');
+        return const Locale('vi', 'VI');
+      },
       initialRoute: '/',
       routes: {
         '/': (context) => const Home(),

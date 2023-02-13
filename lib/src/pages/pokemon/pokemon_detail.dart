@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:poke_dictionary/src/model/pokedetail.dart';
+import 'package:poke_dictionary/src/model/pokemon/pokedetail.model.dart';
 import 'package:poke_dictionary/src/utils/helpers.dart';
-import 'dart:convert';
 
 class ScreenArguments {
   final PokemonDetail detail;

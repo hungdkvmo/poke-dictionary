@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:poke_dictionary/src/blocs/poke/poke_bloc.dart';
-import 'package:poke_dictionary/src/model/pokemon.dart';
+import 'package:poke_dictionary/src/model/pokemon/pokemon.model.dart';
 import 'package:poke_dictionary/src/pages/pokemon/pokemon_single.dart';
 import 'package:poke_dictionary/src/widgets/bottom_loader.dart';
 
@@ -27,10 +27,10 @@ class _PokeListViewState extends State<PokeListView> {
       builder: (context, state) {
         switch (state.status) {
           case PokeStatus.failure:
-            return const Center(child: Text('failed to fetch posts'));
+            return const Center(child: Text('failed to fetch pokemons'));
           case PokeStatus.success:
             if (state.monsters.isEmpty) {
-              return const Center(child: Text('no posts'));
+              return const Center(child: Text('no pokemons'));
             }
             return GridView.count(
               shrinkWrap: true,
@@ -45,8 +45,6 @@ class _PokeListViewState extends State<PokeListView> {
                     : state.monsters.length + 1,
                 (int index) {
                   String pokeIndex = (index + 1).toString();
-                  print('index $index');
-                  print('state.monsters.length ${state.monsters.length}');
                   if (index >= state.monsters.length) {
                     return const BottomLoader();
                   }

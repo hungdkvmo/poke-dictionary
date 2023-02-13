@@ -3,13 +3,13 @@ part of 'poke_bloc.dart';
 enum PokeStatus { initial, success, failure }
 
 class PokeState extends Equatable {
-  const PokeState({
+  PokeState({
     this.status = PokeStatus.initial,
     this.monsters = const <Monster>[],
     this.hasReachedMax = false,
   });
 
-  final PokeStatus status;
+  PokeStatus status;
   final List<Monster> monsters;
   final bool hasReachedMax;
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:poke_dictionary/src/model/monster.dart';
+import 'package:poke_dictionary/src/model/pokemon/monster.model.dart';
 
 class PokeListItem extends StatelessWidget {
   const PokeListItem({super.key, required this.monster});

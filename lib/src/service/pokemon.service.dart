@@ -1,10 +1,8 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 
-import 'package:poke_dictionary/src/model/monster.dart';
-import 'package:poke_dictionary/src/model/pokedetail.dart';
-
-import '../model/pokekalos.dart';
+import 'package:poke_dictionary/src/model/pokemon/monster.model.dart';
+import 'package:poke_dictionary/src/model/pokemon/pokedetail.model.dart';
 
 Future<List<Monster>> fetchPokeList() async {
   final response =
@@ -33,20 +31,4 @@ Future<PokemonDetail> getPokemonDetailByName(String name) async {
   PokemonDetail result =
       PokemonDetail.fromJson(json.decode(response.toString()));
   return result;
-}
-
-Future<List<Pokemon>> getPokeList() async {
-  final response =
-      await Dio().get('https://www.pokemon.com/us/api/pokedex/kalos');
-  List<dynamic> results = [];
-  if (response.statusCode == 200) {
-    results = json.decode(response.toString());
-    List<Pokemon> pokeList = [];
-    for (int index = 0; index < results.length; index++) {
-      pokeList.add(Pokemon.fromJson(results[index]));
-    }
-    return pokeList;
-  } else {
-    throw Exception('Failed to load album');
-  }
 }

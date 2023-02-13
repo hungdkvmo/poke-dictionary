@@ -6,7 +6,7 @@ import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 // import 'package:flutter_infinite_list/posts/posts.dart';
-import 'package:poke_dictionary/src/model/monster.dart';
+import 'package:poke_dictionary/src/model/pokemon/monster.model.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 part 'poke_event.dart';
@@ -22,14 +22,21 @@ EventTransformer<E> throttleDroppable<E>(Duration duration) {
 }
 
 class PokeBloc extends Bloc<PokeEvent, PokeState> {
-  PokeBloc({required this.dio}) : super(const PokeState()) {
+  final Dio dio;
+
+  PokeBloc({required this.dio}) : super(PokeState()) {
     on<PokeFetched>(
       _onPokeFetched,
       transformer: throttleDroppable(throttleDuration),
     );
   }
 
-  final Dio dio;
+  refreshFetching() async {
+    PokeBloc pokeBloc = PokeBloc(dio: Dio());
+    state.status = PokeStatus.initial;
+    pokeBloc._onPokeFetched;
+    pokeBloc.add(PokeFetched());
+  }
 
   Future<void> _onPokeFetched(
     PokeFetched event,

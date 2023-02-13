@@ -1,5 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:localization/localization.dart';
 import 'package:poke_dictionary/src/blocs/poke/poke_bloc.dart';
 
 import 'package:poke_dictionary/src/gen/assets.gen.dart';
@@ -39,38 +41,43 @@ class _PokemonListState extends State<PokemonList> {
             color: Colors.grey[200],
             borderRadius: BorderRadius.circular(12),
           ),
-          child: SingleChildScrollView(
-            controller: _scrollController,
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(minHeight: 640),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 32,
-                    child: Row(
-                      children: [
-                        Assets.icons.pokeballIcon.svg(
-                          width: 24,
-                          height: 24,
-                        ),
-                        const SizedBox(
-                          width: 16,
-                        ),
-                        const Text(
-                          'Pokedex',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
+          child: RefreshIndicator(
+            onRefresh: () async {
+              print('refresh page');
+            },
+            child: SingleChildScrollView(
+              controller: _scrollController,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(minHeight: 640),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 32,
+                      child: Row(
+                        children: [
+                          Assets.icons.pokeballIcon.svg(
+                            width: 24,
+                            height: 24,
                           ),
-                        )
-                      ],
+                          const SizedBox(
+                            width: 16,
+                          ),
+                          Text(
+                            'poke-list-title'.i18n(),
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  const PokeListView(),
-                ],
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const PokeListView(),
+                  ],
+                ),
               ),
             ),
           ),

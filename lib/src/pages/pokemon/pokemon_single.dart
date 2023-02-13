@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:poke_dictionary/src/model/pokedetail.dart';
-import 'package:poke_dictionary/src/model/pokemon.dart';
+import 'package:poke_dictionary/src/model/pokemon/pokedetail.model.dart';
+import 'package:poke_dictionary/src/model/pokemon/pokemon.model.dart';
 import 'package:poke_dictionary/src/pages/pokemon/pokemon_detail.dart';
 import 'package:poke_dictionary/src/service/pokemon.service.dart';
 import 'package:poke_dictionary/src/utils/helpers.dart';
